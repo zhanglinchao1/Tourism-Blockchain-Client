@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+		<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>
+			Interworking Mechanism of Blockchain Platforms for Secure Tourism Service
+		</title>
+		<!-- <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' /> -->
+		<!--     Fonts and icons     -->
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+		<!-- CSS Files -->
+		<link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+		<!-- CSS Just for demo purpose, don't include it in your project -->
+		<link href="../assets/demo/demo.css" rel="stylesheet" />
+
+		<!-- copy -->
+
+		<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom fonts for this template-->
+		<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Page level plugin CSS-->
+		<link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+		<!-- Custom styles for this template-->
+		<link href="../css/sb-admin.css" rel="stylesheet">
+		<style type="text/css">
+			.rightcolor {
+				border-right: #B15BFF solid 2px;
+				border-top: #B15BFF solid 2px;
+				border-left: #B15BFF solid 2px;
+			}
+
+			.rightcolor1 {
+				border-right: #B15BFF solid 2px;
+				border-bottom: #B15BFF solid 2px;
+				border-left: #B15BFF solid 2px;
+			}
+
+			#dataTable {
+				border-bottom: #B15BFF solid 2px;
+			}
+			
+		</style>
+	</head>
+
+	<body class="dark-edition">
+		<div class="wrapper ">
+			<div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+
+				<div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+						Tourist Blockchain
+					</a></div>
+				<div class="sidebar-wrapper">
+					<ul class="nav">
+						<li class="nav-item ">
+							<a class="nav-link" href="index.html">
+								<i class="material-icons">dashboard</i>
+								<p>Dashboard</p>
+							</a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link" href="user.html">
+								<i class="material-icons">person</i>
+								<p>User </p>
+							</a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link" href="Adduser.html">
+								<i class="material-icons">content_paste</i>
+								<p>Add user</p>
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="contract.html">
+								<i class="material-icons">content_paste</i>
+								<p>Contract</p>
+							</a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link" href="Query.html">
+								<i class="material-icons">content_paste</i>
+								<p>Query Hotel</p>
+							</a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link" href="Booking.html">
+								<i class="material-icons">library_books</i>
+								<p>Booking</p>
+							</a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link" href="History.html">
+								<i class="material-icons">bubble_chart</i>
+								<p>History</p>
+							</a>
+						</li>
+						<!-- <li class="nav-item ">
+							<a class="nav-link" href="map.html">
+								<i class="material-icons">location_ons</i>
+								<p>Maps</p>
+							</a>
+						</li> -->
+						<!-- <li class="nav-item ">
+							<a class="nav-link" href="notifications.html">
+								<i class="material-icons">notifications</i>
+								<p>Notifications</p>
+							</a>
+						</li> -->
+						<!-- <li class="nav-item active-pro ">
+                <a class="nav-link" href="./upgrade.html">
+                    <i class="material-icons">unarchive</i>
+                    <p>Upgrade to PRO</p>
+                </a>
+            </li> -->
+					</ul>
+				</div>
+			</div>
+			<div class="main-panel">
+				<!-- Navbar -->
+				<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+					<div class="container-fluid">
+						<div class="navbar-wrapper">
+							<a class="navbar-brand" href="javascript:void(0)">User Profile</a>
+						</div>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+						 aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="navbar-toggler-icon icon-bar"></span>
+							<span class="navbar-toggler-icon icon-bar"></span>
+							<span class="navbar-toggler-icon icon-bar"></span>
+						</button>
+						<div class="collapse navbar-collapse justify-content-end">
+							<form class="navbar-form">
+								<div class="input-group no-border">
+									<input type="text" value="" class="form-control" style="color: #0000FE;" placeholder="Search...">
+									<button type="submit" class="btn btn-default btn-round btn-just-icon">
+										<i class="material-icons">search</i>
+										<div class="ripple-container"></div>
+									</button>
+								</div>
+							</form>
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a class="nav-link" href="javascript:void(0)">
+										<i class="material-icons">dashboard</i>
+										<p class="d-lg-none d-md-block">
+											Stats
+										</p>
+									</a>
+								</li>
+								<li class="nav-item dropdown">
+									<a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+									 aria-expanded="false">
+										<i class="material-icons">notifications</i>
+										<span class="notification">5</span>
+										<p class="d-lg-none d-md-block">
+											Some Actions
+										</p>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+										<a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
+										<a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
+										<a class="dropdown-item" href="javascript:void(0)">You're now friend with Andrew</a>
+										<a class="dropdown-item" href="javascript:void(0)">Another Notification</a>
+										<a class="dropdown-item" href="javascript:void(0)">Another One</a>
+									</div>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="javascript:void(0)">
+										<i class="material-icons">person</i>
+										<p class="d-lg-none d-md-block">
+											Account
+										</p>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<!-- End Navbar -->
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<!-- 第一个table -->
+									<div class="card-header card-header-primary">
+										<h4 class="card-title ">Contract Table</h4>
+										<p class="card-category"> Get a list of Contract information</p>
+										<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#AddDoctorModal" style="position: absolute; top: 1.26rem; right: 12.25rem;">Add
+											Order </button>
+										<!-- <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#SendBillModal" style="position: absolute; top: 1.26rem; right: 12.25rem;">Setup Demo </button> -->
+										<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#PayBillModal" style="position: absolute; top: 1.26rem; right: 2.25rem;">Updated
+											Order</button>
+
+									</div>
+									<div class="card-body">
+										<div class="table-responsive">
+											<!-- copy-MCL -->
+											<div id="content-wrapper">
+												<div class="container-fluid">
+
+													<!-- DataTables Example -->
+													<div class="card mb-3">
+
+														<div class="table-responsive">
+															<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+																<thead>
+																	<tr>
+																		<th>OrderID</th>
+																		<th>CustomerID</th>
+																		<th>CompanyID</th>
+																		<th>RoomType</th>
+																		<th>OrderStatus</th>
+																		<th>CheckIn</th>
+																		<th>CheckOut</th>
+																		<th>NoSmoking</th>
+																		<th>Action</th>
+																	</tr>
+																</thead>
+																<tbody>
+																</tbody>
+															</table>
+														</div>
+													</div>
+													<div class="card-footer small text-muted">
+														<p>Updated at <span id="datetime"></span></p>
+													</div>
+												</div>
+
+											</div>
+
+											<!-- Add order Modal-->
+											<div class="modal fade" id="AddDoctorModal" tabindex="-1" role="dialog" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title">Create Order</h5>
+															<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">×</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<form>
+																<div >
+																	<label for="orderId" style="color:black;" class="col-form-label">OrderID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="orderId">
+																</div>
+																<div >
+																	<label for="hotelId" style="color:black;" style="color:black;" class="col-form-label">HotelID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="hotelId">
+																</div>
+																<div >
+																	<label for="customerId" style="color:black;" style="color:black;" style="color:black;" class="col-form-label">CustomerID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="customerId">
+																</div>
+																<div>
+																	<label for="roomtype" style="color:black;" style="color:black;" style="color:black;" style="color:black;" class="col-form-label">RoomType:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;"  id="roomtype">
+																</div>
+																<!-- <div class="form-group">
+											            <label for="orderStatus" class="col-form-label">OrderStatus:</label>
+											            <input type="text" class="form-control" id="orderStatus">
+											          </div> -->
+																<div >
+																	<label for="checkIn" style="color:black;" style="color:black;" style="color:black;" style="color:black;" style="color:black;" class="col-form-label">CheckIn:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;"  id="checkIn">
+																</div>
+																<div >
+																	<label for="checkOut" style="color:black;" style="color:black;" style="color:black;" style="color:black;" style="color:black;" style="color:black;" class="col-form-label">CheckOut:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;"  id="checkOut">
+																</div>
+																<div >
+																	<label for="nosmoking" style="color:black;" style="color:black;" style="color:black;" style="color:black;" style="color:black;" style="color:black;" style="color:black;" class="col-form-label">NoSmoking:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;"  id="nosmoking" value="true">
+																</div>
+															</form>
+														</div>
+														<div class="modal-footer">
+															<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+															<button class="btn btn-primary" id="addBill">Submit</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- Edit order Modal-->
+
+											<!-- Edit Order Modal-->
+											<div class="modal fade" id="EditBillModal" tabindex="-1" role="dialog" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title">Edit Bill</h5>
+															<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">×</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<form class="navbar-form">
+																<div >
+																	<label for="newbillID" style="color: #000000;" class="col-form-label">OrderID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="newbillID" readonly>
+																</div>
+																<div >
+																	<label for="newpatient" style="color: #000000;" class="col-form-label">CustomerID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="newpatient">
+																</div>
+																<div >
+																	<label for="newregulator" style="color: #000000;" class="col-form-label">CompanyID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="newregulator">
+																</div>
+																<div >
+																	<label for="newamount" style="color: #000000;" class="col-form-label">RoomType:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="newamount">
+																</div>
+																<div >
+																	<label for="newbillstatus" style="color: #000000;" class="col-form-label">OrderStatus:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="newbillstatus">
+																</div>
+																<div >
+																	<label for="newhospitalmoneypool" style="color: #000000;" class="col-form-label">CheckIn:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="newhospitalmoneypool">
+																</div>
+																<div >
+																	<label for="newhospitalmoneypool1" style="color: #000000;" class="col-form-label">CheckOut:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="newhospitalmoneypool1">
+																</div>
+																<div >
+																	<label for="newhospitalmoneypool2" style="color: #000000;" class="col-form-label">NoSmoking:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;"  id="newhospitalmoneypool2">
+																</div>
+															</form>
+														</div>
+														<div class="modal-footer">
+															<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+															<button class="btn btn-primary" id="editBill">Save Changes</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- Delete order Modal-->
+											<div class="modal fade" id="SendBillModal" tabindex="-1" role="dialog" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title">Submit Transaction</h5>
+															<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">×</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<form>
+																<div >
+																	<label for="patientsent" style="color: #000000;" class="col-form-label">PatientID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="patientsent">
+																</div>
+																<div >
+																	<label for="billsent" style="color: #000000;" class="col-form-label">BillID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="billsent">
+																</div>
+															</form>
+														</div>
+														<div class="modal-footer">
+															<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+															<button class="btn btn-primary" id="sendBill">Submit</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- Pay Bill Modal-->
+											<div class="modal fade" id="PayBillModal" tabindex="-1" role="dialog" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title">Submit Transaction</h5>
+															<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">×</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<form>
+																<div >
+																	<label for="patientpaid" style="color: #000000;" class="col-form-label">OrderID:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="patientpaid">
+																</div>
+																<div >
+																	<label for="billpaid" style="color: #000000;" class="col-form-label">OrderStatus:</label>
+																	<input type="text" class="form-control" style="color: #0000FE;" id="billpaid">
+																</div>
+																<!-- <div class="form-group">
+											            <label for="moneypoolpaid" class="col-form-label">MoneyPoolID:</label>
+											            <input type="text" class="form-control" id="moneypoolpaid">
+											          </div> -->
+															</form>
+														</div>
+														<div class="modal-footer">
+															<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+															<button class="btn btn-primary" id="payBill">Submit</button>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!-- Delete Bill Modal-->
+											<div class="modal fade" id="DeleteBillModal" tabindex="-1" role="dialog" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title">Delete Order</h5>
+															<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">×</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<form>
+																<div class="form-group">
+																	<p id="deleteID"></p>
+																</div>
+																<p>Select "Confirm" below if you are ready to delete the current Order.</p>
+															</form>
+														</div>
+														<div class="modal-footer">
+															<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+															<button class="btn btn-primary" id="deleteBill">Confirm</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- copy-MCL结束 -->
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<footer class="footer">
+					<div class="container-fluid">
+						<nav class="float-left">
+							<ul>
+								<li>
+									<a href="#">
+										Blockchain
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										About Us
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Blog
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Licenses
+									</a>
+								</li>
+							</ul>
+						</nav>
+
+
+					</div>
+					<div class="copyright float-right" id="date">
+						, Welcome <i class="material-icons">favorite</i> to the
+						<a href="https://www.creative-tim.com" target="_blank">Tourist Blockchain</a> website.
+					
+					</div>
+				</footer>
+			<script>
+				const x = new Date().getFullYear();
+				let date = document.getElementById('date');
+				date.innerHTML = '&copy; ' + x + date.innerHTML;
+			</script>
+		</div>
+		</div>
+		<div class="fixed-plugin">
+			<div class="dropdown show-dropdown">
+				<a href="#" data-toggle="dropdown">
+					<i class="fa fa-cog fa-2x"> </i>
+				</a>
+				<ul class="dropdown-menu">
+					<li class="header-title"> Sidebar Filters</li>
+					<li class="adjustments-line">
+						<a href="javascript:void(0)" class="switch-trigger active-color">
+							<div class="badge-colors ml-auto mr-auto">
+								<span class="badge filter badge-purple active" data-color="purple"></span>
+								<span class="badge filter badge-azure" data-color="azure"></span>
+								<span class="badge filter badge-green" data-color="green"></span>
+								<span class="badge filter badge-warning" data-color="orange"></span>
+								<span class="badge filter badge-danger" data-color="danger"></span>
+							</div>
+							<div class="clearfix"></div>
+						</a>
+					</li>
+					<li class="header-title">Images</li>
+					<li>
+						<a class="img-holder switch-trigger" href="javascript:void(0)">
+							<img src="../assets/img/sidebar-1.jpg" alt="">
+						</a>
+					</li>
+					<li class="active">
+						<a class="img-holder switch-trigger" href="javascript:void(0)">
+							<img src="../assets/img/sidebar-2.jpg" alt="">
+						</a>
+					</li>
+					<li>
+						<a class="img-holder switch-trigger" href="javascript:void(0)">
+							<img src="../assets/img/sidebar-3.jpg" alt="">
+						</a>
+					</li>
+					<li>
+						<a class="img-holder switch-trigger" href="javascript:void(0)">
+							<img src="../assets/img/sidebar-4.jpg" alt="">
+						</a>
+					</li>
+					<li class="button-container">
+						<a href="https://www.creative-tim.com/product/material-dashboard-dark" target="_blank" class="btn btn-primary btn-block">Free
+							Download</a>
+					</li>
+					<!-- <li class="header-title">Want more components?</li>
+            <li class="button-container">
+                <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
+                  Get the pro version
+                </a>
+            </li> -->
+					<li class="button-container">
+						<a href="https://demos.creative-tim.com/material-dashboard-dark/docs/2.0/getting-started/introduction.html"
+						 target="_blank" class="btn btn-default btn-block">
+							View Documentation
+						</a>
+					</li>
+					<li class="button-container github-star">
+						<a class="github-button" href="https://github.com/creativetimofficial/material-dashboard/tree/dark-edition"
+						 data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+					</li>
+					<li class="header-title">Thank you for 95 shares!</li>
+					<li class="button-container text-center">
+						<button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
+						<button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+						<br>
+						<br>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--   Core JS Files   -->
+		<script src="../assets/js/core/jquery.min.js"></script>
+		<script src="../assets/js/core/popper.min.js"></script>
+		<script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+		<script src="https://unpkg.com/default-passive-events"></script>
+		<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+		<!-- Place this tag in your head or just before your close body tag. -->
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
+		<!--  Google Maps Plugin    -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+		<!-- Chartist JS -->
+		<script src="../assets/js/plugins/chartist.min.js"></script>
+		<!--  Notifications Plugin    -->
+		<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+		<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+		<script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
+		<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+		<script src="../assets/demo/demo.js"></script>
+		<!-- Bootstrap core JavaScript-->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Page level plugin JavaScript-->
+		<script src="vendor/datatables/jquery.dataTables.js"></script>
+		<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="js/sb-admin.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				getOrder();
+				getTransactionId();
+
+				$().ready(function() {
+					$sidebar = $('.sidebar');
+
+					$sidebar_img_container = $sidebar.find('.sidebar-background');
+
+					$full_page = $('.full-page');
+
+					$sidebar_responsive = $('body > .navbar-collapse');
+
+					window_width = $(window).width();
+
+					$('.fixed-plugin a').click(function(event) {
+						// Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+						if ($(this).hasClass('switch-trigger')) {
+							if (event.stopPropagation) {
+								event.stopPropagation();
+							} else if (window.event) {
+								window.event.cancelBubble = true;
+							}
+						}
+					});
+
+					$('.fixed-plugin .active-color span').click(function() {
+						$full_page_background = $('.full-page-background');
+
+						$(this).siblings().removeClass('active');
+						$(this).addClass('active');
+
+						var new_color = $(this).data('color');
+
+						if ($sidebar.length != 0) {
+							$sidebar.attr('data-color', new_color);
+						}
+
+						if ($full_page.length != 0) {
+							$full_page.attr('filter-color', new_color);
+						}
+
+						if ($sidebar_responsive.length != 0) {
+							$sidebar_responsive.attr('data-color', new_color);
+						}
+					});
+
+					$('.fixed-plugin .background-color .badge').click(function() {
+						$(this).siblings().removeClass('active');
+						$(this).addClass('active');
+
+						var new_color = $(this).data('background-color');
+
+						if ($sidebar.length != 0) {
+							$sidebar.attr('data-background-color', new_color);
+						}
+					});
+
+					$('.fixed-plugin .img-holder').click(function() {
+						$full_page_background = $('.full-page-background');
+
+						$(this).parent('li').siblings().removeClass('active');
+						$(this).parent('li').addClass('active');
+
+
+						var new_image = $(this).find("img").attr('src');
+
+						if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+							$sidebar_img_container.fadeOut('fast', function() {
+								$sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+								$sidebar_img_container.fadeIn('fast');
+							});
+						}
+
+						if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+							var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+							$full_page_background.fadeOut('fast', function() {
+								$full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+								$full_page_background.fadeIn('fast');
+							});
+						}
+
+						if ($('.switch-sidebar-image input:checked').length == 0) {
+							var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+							var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+							$sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+							$full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+						}
+
+						if ($sidebar_responsive.length != 0) {
+							$sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+						}
+					});
+
+					$('.switch-sidebar-image input').change(function() {
+						$full_page_background = $('.full-page-background');
+
+						$input = $(this);
+
+						if ($input.is(':checked')) {
+							if ($sidebar_img_container.length != 0) {
+								$sidebar_img_container.fadeIn('fast');
+								$sidebar.attr('data-image', '#');
+							}
+
+							if ($full_page_background.length != 0) {
+								$full_page_background.fadeIn('fast');
+								$full_page.attr('data-image', '#');
+							}
+
+							background_image = true;
+						} else {
+							if ($sidebar_img_container.length != 0) {
+								$sidebar.removeAttr('data-image');
+								$sidebar_img_container.fadeOut('fast');
+							}
+
+							if ($full_page_background.length != 0) {
+								$full_page.removeAttr('data-image', '#');
+								$full_page_background.fadeOut('fast');
+							}
+
+							background_image = false;
+						}
+					});
+
+					$('.switch-sidebar-mini input').change(function() {
+						$body = $('body');
+
+						$input = $(this);
+
+						if (md.misc.sidebar_mini_active == true) {
+							$('body').removeClass('sidebar-mini');
+							md.misc.sidebar_mini_active = false;
+
+							$('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+						} else {
+
+							$('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+							setTimeout(function() {
+								$('body').addClass('sidebar-mini');
+
+								md.misc.sidebar_mini_active = true;
+							}, 300);
+						}
+
+						// we simulate the window Resize so the charts will get updated in realtime.
+						var simulateWindowResize = setInterval(function() {
+							window.dispatchEvent(new Event('resize'));
+						}, 180);
+
+						// we stop the simulation of Window Resize after the animations are completed
+						setTimeout(function() {
+							clearInterval(simulateWindowResize);
+						}, 1000);
+
+					});
+				});
+			});
+
+			// 获取CutomerhyperLedger的数据，实现增删改查
+			function getOrder() {
+				$.get("http://192.168.128.135:3000/api/Order", function(data, status) {
+					for (var i = 0; i < data.length; i++) {
+						var htm = "";
+						var OrderID = data[i].orderId;
+						var CustomerID = data[i].orderer.slice(35);
+						var CompanyID = data[i].contractDetails.make.slice(26);
+						var RoomType = data[i].contractDetails.roomType;
+						var OrderStatus = data[i].orderStatus;
+						var CheckIn = data[i].options.Checkin;
+						var CheckOut = data[i].options.Checkout;
+						var NoSmoking = data[i].options.NoSmoking;
+						var TransactionId = data[i].transactionId;
+
+						// console.log(CustomerID);
+						htm += '<tr class = "rightcolor"><td style="border-left:#B15BFF solid 2px;">' + OrderID + '</td><td>' +
+							CustomerID + '</td><td>' + CompanyID + '</td><td>' +
+							RoomType + '</td><td>' + OrderStatus + '</td><td>' +
+							CheckIn + '</td><td>' + CheckOut + '</td><td>' +
+							NoSmoking + '</td><td rowspan="2" class="rightcolor2">' +
+							'<button type="button" class="btn btn btn-link" data-toggle="modal" data-target="#EditBillModal" data-orderid="' +
+							OrderID + '" data-customer="' + CustomerID + '" data-company="' + CompanyID + '" data-roomtype="' + RoomType +
+							'" data-orderstatus="' + OrderStatus + '" data-checkin="' + CheckIn + '" data-CheckOut="' + CheckOut +
+							'" data-NoSmoking="' + NoSmoking + '">Edit </button>' +
+							'<button type="button" class="btn btn btn-link" data-toggle="modal" data-target="#DeleteBillModal" data-id="' +
+							OrderID + '">Delete </button>' +
+							'</td></tr><tr class = "rightcolor1"><td colspan="8"><div class="innerHTML"> TransactionId:  </div></td></tr>'
+						// 上面这里原本时添加TransactionId的，需要从palceorder api中拉去过来。
+
+						$('#dataTable tbody').append(htm);
+						// alert(i);
+					}
+					$.get("http://192.168.128.135:3000/api/PlaceOrder", function(data, status) {
+						for (var j = 0; j < data.length; j++) {
+							var innerhtml = document.getElementsByClassName("innerHTML")[j];
+
+							var TransactionId = data[j].transactionId;
+
+							$(innerhtml).append(TransactionId)
+
+						}
+					})
+
+					$('#dataTable').DataTable();
+				});
+			}
+
+
+			$('#addBill').click(function() {
+				var orderId = $('#orderId').val();
+				var hotelId = 'resource:org.tour_network.Hotel#' + $('#hotelId').val();
+				var customerId = 'resource:org.tour_network.Customer#' + $('#customerId').val();
+				var roomtype = $('#roomtype').val();
+				// var persons = $('#persons').val();
+				var checkIn = $('#checkIn').val();
+				var checkOut = $('#checkOut').val();
+				var nosmoking = $('#nosmoking').val();
+				// 第一个ajax创建order资产的
+				$.ajax({
+					url: "http://192.168.128.135:3000/api/PlaceOrder",
+					method: "POST",
+					data: {
+
+
+						"$class": "org.tour_network.PlaceOrder",
+						"orderId": orderId,
+						"contractDetails": {
+							"$class": "org.tour_network.ContractDetails",
+							"make": hotelId,
+							"roomType": roomtype,
+							"persons": 2
+						},
+						"options": {
+							"$class": "org.tour_network.Options",
+							"ScheduledDate": "2019-12-01T16:43:01.884Z",
+							"Checkin": checkIn,
+							"Checkout": checkOut,
+							"Night": 0,
+							"Tel": "",
+							"NoSmoking": nosmoking
+						},
+						"orderer": customerId
+
+					},
+				}).done(function(msg) {
+					alert('OrderID:' + orderId + " Successfully Created");
+					location.reload(true);
+				});
+			});
+
+
+
+			$('#EditBillModal').on('shown.bs.modal', function(event) {
+				var button = $(event.relatedTarget);
+				var billID = button.data('orderid');
+				var patient = button.data('customer');
+				var regulator = button.data('company').slice(6);
+
+				var amount = button.data('roomtype');
+				var billStatus = button.data('orderstatus');
+				var hospitalMoneyPool = button.data('checkin');
+				var checkOut1 = button.data('checkout');
+				var nosmoking1 = button.data('nosmoking');
+				var modal = $(this);
+				modal.find('#newbillID').val(billID);
+				modal.find('#newpatient').val(patient);
+				modal.find('#newregulator').val(regulator);
+				modal.find('#newamount').val(amount);
+				modal.find('#newbillstatus').val(billStatus);
+				modal.find('#newhospitalmoneypool').val(hospitalMoneyPool);
+				modal.find('#newhospitalmoneypool1').val(checkOut1);
+				modal.find('#newhospitalmoneypool2').val(nosmoking1);
+			});
+			// 编辑order框，修改
+			$('#editBill').click(function() {
+				var newOrderID = $('#newbillID').val();
+				var newCustomerID = 'resource:org.tour_network.Customer#' + $('#newpatient').val();
+				var newrCompanyID = $('#newregulator').val();
+				var newRoomType = $('#newamount').val();
+				var newOrderStatus = $('#newbillstatus').val();
+				var newCheckIn = $('#newhospitalmoneypool').val();
+				var newCheckOut = $('#newhospitalmoneypool1').val();
+				var newNoSmoking = $('#newhospitalmoneypool2').val();
+
+				$.ajax({
+					url: 'http://192.168.128.135:3000/api/Order/' + newOrderID,
+					method: "PUT",
+					data: {
+
+						"$class": "org.tour_network.Order",
+						"contractDetails": {
+							"$class": "org.tour_network.ContractDetails",
+							"make": newrCompanyID,
+							"roomType": newRoomType,
+							"persons": "2"
+						},
+						"orderStatus": newOrderStatus,
+						"options": {
+							"$class": "org.tour_network.Options",
+							"ScheduledDate": "2019-12-01T16:43:01.884Z",
+							"Checkin": newCheckIn,
+							"Checkout": newCheckOut,
+							"Night": 2,
+							"Tel": "+821044000307",
+							"NoSmoking": newNoSmoking
+						},
+						"orderer": newCustomerID
+
+					}
+				}).done(function(msg) {
+					// alert(msg.doctorID);
+					alert(newOrderID + " Successfully Updated");
+					location.reload(true);
+				});
+			});
+
+
+			//删除order
+			$('#DeleteBillModal').on('shown.bs.modal', function(event) {
+				var button = $(event.relatedTarget);
+				var newOrderid = button.data('id');
+				var modal = $(this);
+				modal.find('#deleteID').text(newOrderid);
+
+				$.ajax({
+					url: 'http://192.168.128.135:3000/api/Order/' + newOrderid,
+					method: "DELETE",
+				}).fail(function(msg) {
+					// alert(msg.doctorID);
+					alert(newOrderid + " Successfully Deleted");
+					location.reload(true);
+				});
+
+			});
+
+
+			//send bill transaction
+			// $('#sendBill').click(function () {
+			//     var billID = 'resource:composers.bills.Bill#'+$('#billsent').val();
+			//     var patientID = 'resource:composers.participants.Patient#'+$('#patientsent').val();
+			//     var url = "http://192.168.0.21:3000/api/sendBill/";
+			//     $.ajax({
+			//         url: url,
+			//         method: "POST",
+			//         data: {
+			//             $class : 'composers.bills.sendBill',
+			//             patient : patientID,
+			//             bill : billID,
+			//         }
+			//     }).done(function(msg) {
+			//         // alert(msg.doctorID);
+			//         alert(billID + " Successfully Sent");
+			//         location.reload(true);
+			//     });
+			// });
+
+			// updatte order 
+
+			$('#payBill').click(function() {
+				var OrderID1 = 'resource:org.tour_network.Order#' + $('#patientpaid').val();
+				var OrderStatus1 = $('#billpaid').val();
+				var url = "http://192.168.128.135:3000/api/UpdateOrderStatus";
+				$.ajax({
+					url: url,
+					method: "POST",
+					data: {
+
+						"$class": "org.tour_network.UpdateOrderStatus",
+						"orderStatus": OrderStatus1,
+						"order": OrderID1
+					}
+				}).done(function(msg) {
+					// alert(msg.OrderID1);
+					alert(OrderID1 + " Successfully Paid to " + OrderStatus1);
+					location.reload(true)
+				});
+			});
+
+
+
+			// $('#deleteBill').click(function () {
+			//      var billID = $('#deleteID').text();
+			//      var api = "http://192.168.0.21:3000/api/Bill/";
+			//      var url = api.concat(billID);
+			//      $.ajax({
+			//          url: url,
+			//          method: "DELETE",
+			//      }).fail(function(msg) {
+			//          // alert(msg.doctorID);
+			//          alert(billID + " Successfully Deleted");
+			//          location.reload(true);
+			//      });
+			//  });
+
+			var dt = new Date();
+			document.getElementById("datetime").innerHTML = dt.toLocaleString();
+		</script>
+	</body>
+
+</html>

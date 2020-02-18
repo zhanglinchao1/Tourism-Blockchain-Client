@@ -1,0 +1,299 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sample booking page</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+		 crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+		<style type="text/css">
+			.container{
+				background-color: #1A2035;
+				color: white;
+			}
+			.form{
+				 outline-style: none ;
+				    border: 1px solid #ccc; 
+				    border-radius: 3px;
+				    padding: 10px 14px;
+					margin: 1.25rem;
+					
+				    width: 400px;
+					height: 2.6rem;
+				    font-size: 14px;
+				    font-weight: 600;
+				    font-family: "Microsoft soft";
+			}
+			.form:focus{
+				border-color: #66afe9;
+				    outline: 0;
+				    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+				    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+			}
+			.btn-round{
+							width: 80px;/*设置按钮宽度*/
+							height: 40px;/*设置按钮高度*/
+							color:white;/*字体颜色*/
+							background-color:cornflowerblue;/*按钮背景颜色*/
+							border-radius: 3px;/*让按钮变得圆滑一点*/
+							border-width: 0;/*消去按钮丑的边框*/
+							margin: 1.25rem;
+							outline: none;/*取消轮廓*/
+							
+							font-size: 20px;/*设置字体大小*/
+							text-align: center;/*字体居中*/
+							cursor: pointer;/*设置鼠标箭头手势*/		
+			}
+			.btn-round:hover{
+				background-color: antiquewhite;
+			}
+		</style>
+	</head>
+	<body class="container">
+		
+		<!-- 通过输入框搜索 -->
+		<div class="input-group no-border">
+			<input type="text" value="" class="form" placeholder="Search...">
+			<button type="submit" class="btn btn-default btn-round btn-just-icon">
+				<i class="material-icons">search</i>									
+			</button>
+		</div>
+	
+		
+		<div id="error" class="alert" style="color: white;"></div>
+		<div id="hotel-description" style="color: white;">
+			<h1 id="hotel-name"></h1>
+			<div id="hotel-address"></div>
+		</div>
+		
+		<hr />
+		<div id="stay-details">
+			<p>
+				<label for="room-types-select">Select a room</label>
+				<select id="room-types-select" name="room-types-select" class="form-control"></select>
+			</p>
+			<p>
+				<label for="arrival-date">Date of arrival</label>
+				<input type="date" id="arrival-date" name="arrival-date" class="form-control" />
+			</p>
+			<p>
+				<label for="arrival-date">Date of departure</label>
+				<input type="date" id="departure-date" name="departure-date" class="form-control" />
+			</p>
+		</div>
+		<hr />
+		<div id="offer">
+			<div id="offer-price" style="color: green;"></div>
+			<div id="offer-quantity"></div>
+		</div>
+		<hr />
+		<button type="button" disabled="disabled" id="book-button" class="btn btn-primary">Book a room!</button>
+		<script type="text/javascript" src="https://unpkg.com/@windingtree/wt-pricing-algorithms@0.6.2/dist/umd/wt-pricing-algorithms.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/@windingtree/wt-js-libs@0.13.2/dist/umd/wt-js-libs.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/dayjs@1.8.2/dayjs.min.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/web3-utils@1.0.0-beta.55/dist/web3-utils.umd.js"></script>
+		<script type="text/javascript">
+			$("button").click(function() {
+					var hId = $(".form").val();
+					// console.log(hId);
+
+				
+				(() => {
+					let hotelDataFromApi;
+					let resultingPrice;
+					const errorDiv = document.getElementById('error');
+					const bookButton = document.getElementById('book-button');
+					const wtReadApi = 'https://playground-api.windingtree.com';
+					const hotelId = hId;
+					const fields = [
+						'name',
+						'address',
+						'currency',
+						'cancellationPolicies',
+						'defaultCancellationAmount',
+						'bookingUri',
+						'roomTypes.id',
+						'roomTypes.name',
+						'roomTypes.occupancy',
+						'availability',
+						'ratePlans',
+					];
+					const displayHotelData = (hotelData) => {
+						const address =
+							`
+            <span>${hotelData.address.road} ${hotelData.address.houseNumber},</span>
+            <span>${hotelData.address.city} ${hotelData.address.postcode}</span>
+            <span>${hotelData.address.countryCode}</span>
+          `;
+						document.getElementById('hotel-name').innerHTML = hotelData.name;
+						document.getElementById('hotel-address').innerHTML = address;
+						const roomTypesSelect = document.getElementById('room-types-select');
+						hotelData.roomTypes.map((rt) => {
+							roomTypesSelect.insertAdjacentHTML('beforeend',
+								`
+              <option id="rt-${rt.id}" value="${rt.id}">${rt.name}</option>
+            `);
+						});
+					};
+					fetch(`${wtReadApi}/hotels/${hotelId}?fields=${fields.join(',')}`)
+						.then((response) => {
+							if (response.status > 299) {
+								throw new Error('Bad server response.');
+							}
+							return response.json();
+						})
+						.then((data) => {
+							hotelDataFromApi = data;
+							displayHotelData(data);
+						})
+						.catch((err) => {
+							errorDiv.innerHTML = err.toString();
+						});
+
+					const guests = [{
+							"name": "LINCHAO",
+							"surname": "ZHANG",
+							"age": 27
+						},
+						{
+							"name": "LEI",
+							"surname": "HANG",
+							"age": 28
+						},
+					];
+					const roomTypesSelect = document.getElementById('room-types-select');
+					const arrivalDateInput = document.getElementById('arrival-date');
+					const departureDateInput = document.getElementById('departure-date');
+					const recomputePriceAndAvailability = () => {
+						const roomType = roomTypesSelect.value;
+						const arrival = dayjs(arrivalDateInput.value);
+						const departure = dayjs(departureDateInput.value);
+						// Basic validation
+						if (!roomType ||
+							!arrival.isValid() ||
+							!departure.isValid() ||
+							departure.isBefore(arrival) ||
+							arrival.isBefore(dayjs())
+						) {
+							bookButton.disabled = 'disabled';
+							return;
+						}
+						// Price
+						const pc = new window.wtPricingAlgorithms.prices.PriceComputer(
+							hotelDataFromApi.roomTypes,
+							hotelDataFromApi.ratePlans,
+							hotelDataFromApi.currency
+						);
+						resultingPrice = pc.getBestPrice(
+								new Date(), // Booking date
+								arrival,
+								departure,
+								guests,
+								hotelDataFromApi.currency,
+								roomType
+							)
+							// We might not get a price - room is meant for a different number of people or pricing data is not available
+							.filter((p) => p.id === roomType && p.prices.length);
+						if (resultingPrice.length) {
+							// Different price resolution strategies might return more than one price
+							const actualPrice = resultingPrice[0].prices[0];
+							document.getElementById('offer-price').innerHTML =
+								`Price ${actualPrice.total.format()} ${actualPrice.currency}`;
+						} else {
+							document.getElementById('offer-price').innerHTML = 'Price unavailable';
+						}
+
+						// Availability
+						const indexedAvailability = window.wtPricingAlgorithms.availability.indexAvailability(hotelDataFromApi.availability
+							.roomTypes);
+						const roomAvailability = window.wtPricingAlgorithms.availability.computeAvailability(
+							arrival,
+							departure,
+							guests.length,
+							hotelDataFromApi.roomTypes,
+							indexedAvailability
+						).filter((ra) => ra.roomTypeId === roomType && ra.quantity);
+						if (roomAvailability.length) {
+							const actualQuantity = roomAvailability[0].quantity;
+							document.getElementById('offer-quantity').innerHTML = `Available: ${actualQuantity}`;
+						} else {
+							// Room might be sold out, unavailable for arrival or departure on given dates etc.
+							document.getElementById('offer-quantity').innerHTML = 'Unavailable';
+						}
+
+						if (resultingPrice.length && roomAvailability.length) {
+							bookButton.removeAttribute('disabled');
+						} else {
+							bookButton.disabled = true;
+						}
+					}
+					roomTypesSelect.addEventListener('change', recomputePriceAndAvailability);
+					arrivalDateInput.addEventListener('change', recomputePriceAndAvailability);
+					departureDateInput.addEventListener('change', recomputePriceAndAvailability);
+
+					bookButton.addEventListener('click', async () => {
+						const customer = {
+							name: 'LINCHAO',
+							surname: 'ZHANG',
+							email: '584177834@QQ.COM',
+						};
+						const booking = {
+							arrival: dayjs(arrivalDateInput.value).format('YYYY-MM-DD'),
+							departure: dayjs(departureDateInput.value).format('YYYY-MM-DD'),
+							guestInfo: guests.map((g, i) => Object.assign({
+								id: `guest-${i}`
+							}, g)),
+							rooms: [{
+								id: roomTypesSelect.value,
+								guestInfoIds: ['guest-0', 'guest-1']
+							}]
+						};
+						const actualPrice = resultingPrice[0].prices[0];
+						const pricing = {
+							currency: actualPrice.currency,
+							total: actualPrice.total.value,
+							cancellationFees: window.wtPricingAlgorithms.cancellationFees.computeCancellationFees(
+								new Date(),
+								dayjs(arrivalDateInput.value),
+								hotelDataFromApi.cancellationPolicies,
+								hotelDataFromApi.defaultCancellationAmount
+							)
+						};
+
+						/*
+						const wallet = window.wtJsLibs.createWallet({...});
+						wallet.unlock(walletPassword);
+						const serializedRequest = JSON.stringify({
+						  originAddress: wallet.address,
+						  customer: customer,
+						  hotelId: hotelId,
+						  booking: booking,
+						  pricing: pricing,
+						});
+						const signature = await wallet.signData(window.Web3Utils.soliditySha3(serializedRequest));
+						*/
+						fetch(`${hotelDataFromApi.bookingUri}/booking`, {
+								method: 'POST',
+								body: serializedRequest,
+								headers: {
+									'Content-Type': 'application/json',
+									// 'x-wt-signature': signature, // optional
+								},
+							})
+							.then((response) => {
+								if (response.status > 299) {
+									throw new Error('Cannot save booking!');
+								}
+								return response.json();
+							})
+							.then((data) => {
+								errorDiv.innerHTML = `Your booking was accepted with the state ${data.status} under ID ${data.id}`;
+							})
+							.catch((err) => {
+								errorDiv.innerHTML = err.toString();
+							});
+					});
+				})();
+				})
+		</script>
+	</body>
+</html>
